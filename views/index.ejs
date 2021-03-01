@@ -1,23 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ShareHere</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
     <section class="upload-container">
-        <div class="drop">
-            <div class="icon">
-<img src="img/file.svg" class="center" alt=" file icon" draggable="false">
-<img src="img/file.svg" class="left" alt=" file icon" draggable="false">
-<img src="img/file.svg" class="right" alt=" file icon" draggable="false">
-            </div>
-            <div class="comment">Drop your files here or , <span id="btn-browse">Browse</span></div>
+      <div class="drop">
+        <div class="icon">
+          <img
+            src="img/file.svg"
+            class="center"
+            alt=" file icon"
+            draggable="false"
+          />
+          <img
+            src="img/file.svg"
+            class="left"
+            alt=" file icon"
+            draggable="false"
+          />
+          <img
+            src="img/file.svg"
+            class="right"
+            alt=" file icon"
+            draggable="false"
+          />
         </div>
+        <input type="file" id="file_type" />
+        <div class="comment">
+          Drop your files here or , <span id="btn-browse">Browse</span>
+        </div>
+      </div>
+      <div class="progress">
+        <div class="bg_progress"></div>
+        <div class="inner_container">
+          <div class="title">Uploading...</div>
+          <div class="percent"><span id="percent">0</span>%</div>
+          <div class="progressbar"></div>
+        </div>
+      </div>
+
+      <div class="link_share">
+        <p class="noty">Copy to Clipboard</p>
+        <p class="expire">Link expires in 48 Hours</p>
+
+        <div class="input_url">
+          <input type="text" id="File_url" readonly />
+          <img src="img/copy.svg" id="copy_btn" alt="copy" />
+        </div>
+        <div class="email_container">
+          <p id="mail_p">Or Send via Email</p>
+          <form action="#" id="form">
+            <div class="email_div">
+              <label for="your_email">Your Email</label>
+              <input type="email" name="Yemail" id="your_email" required />
+            </div>
+            <div class="email_div">
+              <label for="re_email">Receiver's Email</label>
+              <input type="email" name="Remail" id="re_email" required />
+            </div>
+            <button type="submit" id="btn_form">Send</button>
+          </form>
+        </div>
+      </div>
     </section>
+    <div class="email_noty">email Send Successfully</div>
+
     <script src="js/main.js"></script>
-</body>
+  </body>
 </html>
