@@ -91,7 +91,7 @@ position: relative;
 display: none;
 }
 .progress .bg_progress{
-    background-color: #F9A826;
+    background-color: #f9a826b2;
     width: 0%;
     height: 100%;
     border-radius: 3px;
@@ -137,7 +137,7 @@ color: #696969;
     box-sizing: border-box;
     font-size: 18px;
     outline: none;
-    background-color: #F9A826;
+    background-color: #f9a826b2;
     color: #fff;
 }
 .link_share .input_url{
@@ -147,9 +147,8 @@ color: #696969;
     position: absolute;
     height: 20px;
     width: 32px;
-    right: 6px ;
+    right: 2px ;
     top: 12px;
-    background-color: #F9A826;
     cursor: pointer;
 }
 .email_container{
@@ -227,7 +226,7 @@ transition: .4s ease-in-out;
     bottom: 10px;
     left: 50%;
     padding: 10px 20px;
-    transform: translate(-50%,60px);
+    transform: translate(-50%,80px);
     border-radius: 8px;
     background-color: #f9a826ce;
      color: #fff;
@@ -245,3 +244,47 @@ transition: .4s ease-in-out;
      background-repeat: no-repeat;
   background-size: cover;
 }
+
+@media screen and (max-width: 900px){
+    :root{
+        --set-width:300px;
+    }
+    body{
+        overflow-y: scroll;
+    }
+    .upload_img{
+        display: none;
+    }
+   
+    .email_container .email_div{
+        flex-direction: column;
+        width: 300px;
+        
+    }
+    .email_container form{
+        width: 300px;
+     
+    }
+}
+@media screen and (max-width: 400px){
+    :root{
+        --set-width:250px;
+    }
+    .email_container form{
+        width: 230px;
+    }
+    #btn-form{
+        text-align: center;
+    }
+    .email_container .email_div{
+   
+        width: 230px;
+        
+    }
+    
+}
+@media screen and (max-width : 1024px){
+    .upload_img{
+        display: none;
+    }
+   }

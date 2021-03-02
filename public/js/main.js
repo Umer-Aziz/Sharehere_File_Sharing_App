@@ -47,6 +47,7 @@ copy_btn.addEventListener("click", () => {
   File_url.select();
   document.execCommand("copy");
   noty.style.display="block";
+  ShowNoty("Copy to Clipboard!")
   setTimeout(function() {
     noty.style.display="none";
 }, 2000);
@@ -123,6 +124,6 @@ const ShowNoty=(msg) =>{
   email_noty.style.transform="translate(-50%,0)";
   clearTimeout(emailNoty);
 emailNoty=setTimeout(() => {
-  email_noty.style.transform="translate(-50%,60px)";
+  email_noty.style.transform="translate(-50%,80px)";
 }, 2000);
 }
