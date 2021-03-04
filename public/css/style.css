@@ -10,19 +10,28 @@ body,html{
     background: #696969;
     padding: 0;
     margin: 0;
-    overflow: hidden;
+    overflow-x: hidden;
     height: 100%;
 }
-body, .drop ,.upload-container{
+#main_div{
+    margin-top: 10%;
+    justify-content: center;
+    display: flex;
+    align-items: center !important;
+    flex-direction: row;
+    margin-bottom: 50px;
+   
+    
+}
+
+.drop ,.upload-container{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
-body{
-    display: flex;
-    flex-direction: row;
-}
+
+
 .drop{
     width: var(--set-width);
     min-height: 200px;
@@ -30,6 +39,7 @@ body{
     margin: 30px;
     border-radius: 10px;
     transition: all .27s ease-in-out;
+    
 }
 .drop .comment{
     color: #696969;
@@ -37,7 +47,11 @@ body{
 .upload-container{
     background: #fafafa;
     border-radius: 25px;
-    box-shadow:var(--box-shadow) ;
+    
+    margin-top: 50px;
+    box-shadow: 9px 11px 8px 0px rgba(249,168,38,0.51);
+    -webkit-box-shadow: 9px 11px 8px 0px rgba(249,168,38,0.51);
+    -moz-box-shadow: 9px 11px 8px 0px rgba(249,168,38,0.51);
 }
 
 .icon{
@@ -185,13 +199,14 @@ color: #696969;
     color: #696969;
 
 }
-form #btn_form{
+ #btn_form{
 margin-top: 20px;
 margin-bottom: 12px;
 padding: 10px 20px;
 font-size: 18px;
 color: #F9A826;
 background: #696969;
+
 border: none;
 border-radius: 10px;
 box-shadow: -1px 12px 26px 1px rgba(105,105,105,0.65);
@@ -204,29 +219,17 @@ box-shadow: -1px 12px 26px 1px rgba(105,105,105,0.65);
 transform: scale(1.07);
 transition: .4s ease-in-out;
 }
-.noty{
-    position: absolute;
-    transform: translateX(295%);
-    padding: 10px 20px ;
-    border-radius:5px;
-    border-bottom-left-radius: 15px;
-    background-color: #f9a826ce;
-    
-    color: #fff;
-    box-shadow: -1px 12px 26px 1px rgba(105,105,105,0.65);
-    -webkit-box-shadow: -1px 12px 26px 1px rgba(105,105,105,0.65);
-    -moz-box-shadow: -1px 12px 26px 1px rgba(105,105,105,0.65);
-    transition: 0.3s ease-in-out ;
-    display: none;
-
-    
+#btn_form a{
+    text-decoration: none;
+    color: #F9A826;
 }
+
 .email_noty{
     position: absolute;
-    bottom: 10px;
-    left: 50%;
+    left: 1%;
+    margin-top: 200px;
     padding: 10px 20px;
-    transform: translate(-50%,80px);
+    transform: translateX(-200%);
     border-radius: 8px;
     background-color: #f9a826ce;
      color: #fff;
@@ -243,6 +246,32 @@ transition: .4s ease-in-out;
     background-size: contain;
      background-repeat: no-repeat;
   background-size: cover;
+ 
+ 
+}
+#logo{
+    position: absolute; top: -20px; border: 0; left: 86px; 
+   }
+.downloads{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    color: #696969;
+    padding: 30px 20px;
+    margin: 50px 10px;
+    width: 420px;
+    border-radius: 20px;
+    background-color: #fafafa;
+    box-shadow: 9px 11px 8px 0px rgba(249,168,38,0.51);
+    -webkit-box-shadow: 9px 11px 8px 0px rgba(249,168,38,0.51);
+    -moz-box-shadow: 9px 11px 8px 0px rgba(249,168,38,0.51);
+}
+#download_logo{
+    width: 80px;
+   
+    
 }
 
 @media screen and (max-width: 900px){
@@ -251,10 +280,17 @@ transition: .4s ease-in-out;
     }
     body{
         overflow-y: scroll;
+        
     }
     .upload_img{
         display: none;
     }
+    #logo{
+        position: absolute; top: -20px; border: 0; left: 25px; 
+       }
+       #main_div{
+           margin-top: 120px;
+       }
    
     .email_container .email_div{
         flex-direction: column;
@@ -270,6 +306,7 @@ transition: .4s ease-in-out;
     :root{
         --set-width:250px;
     }
+    
     .email_container form{
         width: 230px;
     }

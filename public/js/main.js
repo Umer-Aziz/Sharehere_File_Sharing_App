@@ -8,6 +8,7 @@ const percent = document.getElementById("percent");
 const File_url = document.getElementById("File_url");
 const copy_btn = document.getElementById("copy_btn");
 const form = document.getElementById("form");
+const logo = document.getElementById("logo");
 const link_share = document.querySelector(".link_share");
 const noty = document.querySelector(".noty");
 const email_noty = document.querySelector(".email_noty");
@@ -15,6 +16,8 @@ const email_noty = document.querySelector(".email_noty");
 const host = "https://innshare.herokuapp.com/";
 const uploadURL = `${host}api/files`;
 const emailURL = `${host}api/files/send`;
+
+const MaxUpload=100 * 1024 * 1024;
 
 drop.addEventListener("dragover", (e) => {
   e.preventDefault();
@@ -46,19 +49,28 @@ btn_browse.addEventListener("click", () => {
 copy_btn.addEventListener("click", () => {
   File_url.select();
   document.execCommand("copy");
-  noty.style.display="block";
-  ShowNoty("Copy to Clipboard!")
-  setTimeout(function() {
-    noty.style.display="none";
-}, 2000);
+  ShowNoty("Copy to Clipboard!");
   
 });
 
 const uploadFile = () => {
+
+  if(file_type.files.length > 1){
+    file_type.value="";
+    ShowNoty("Upload one file at a time!");
+    return
+  }
+  const files = file_type.files[0];
+
+if( files.size > MaxUpload){
+  ShowNoty("Can't upload more than 100MB");
+  file_type.value="";
+  return;
+}
+
   progress.style.display = "block";
-  files = file_type.files;
   const formData = new FormData();
-  formData.append("myfile", files[0]);
+  formData.append("myfile", files);
 
   const xhr = new XMLHttpRequest();
   xhr.onreadystatechange = () => {
@@ -84,7 +96,7 @@ const UpdateP = (e) => {
   progressbar.style.transform = `scaleX(${percentage / 100})`;
 };
 const showLink = ({ file: url }) => {
-  console.log(url);
+  
   File_url.value="";
   form[2].removeAttribute("disabled", "true");
   progress.style.display = "none";
@@ -113,7 +125,7 @@ form.addEventListener("submit", (e) => {
     .then((success) => {
       if(success){
         link_share.style.display="none";
-        ShowNoty("Email Send Successfully!")
+        ShowNoty("Email Sent Successfully!")
       }
     });
 });
@@ -121,9 +133,12 @@ form.addEventListener("submit", (e) => {
 let emailNoty;
 const ShowNoty=(msg) =>{
   email_noty.innerText=msg;
-  email_noty.style.transform="translate(-50%,0)";
+  email_noty.style.transform="translate(10%)";
+  
   clearTimeout(emailNoty);
 emailNoty=setTimeout(() => {
-  email_noty.style.transform="translate(-50%,80px)";
+  email_noty.style.transform="translateX(-290%)";
+  
+
 }, 2000);
 }
