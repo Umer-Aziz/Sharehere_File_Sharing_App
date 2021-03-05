@@ -47,7 +47,45 @@ router.post("/", (req, res) => {
     return res.json({file:`${process.env.APP_BASE_URL}/files/${response.uuid}`})
   });
 
-  //link
+  
 });
+
+router.post('/send',async(req,res)=>{
+  
+ 
+  const {uuid, emailTo ,emailFrom }=req.body;
+ //validating req
+ if(!uuid || !emailTo ||!emailFrom){
+   return res.status(422).send({error:"All fields are required."})
+ }
+//get data from database
+const file=await File.findOne({uuid: uuid});
+if(file.sender){
+  return res.status(422).send({error:"Email already sent."})
+
+}
+file.sender=emailFrom;
+file.receiver=emailTo;
+
+const response=await file.save();
+
+//send email
+const sendMail=require("../services/EmailService")
+sendMail({
+  from:emailFrom,
+  to:emailTo,
+  subject:'ShareHere File Sharing',
+  text:`${emailFrom} shared a file with you .`,
+  html:require("../services/EmailTemplate")({
+    emailFrom:emailFrom,
+    downloadLink:`${process.env.APP_BASE_URL}/files/${file.uuid}`,
+    size:parseInt(file.size/1000) + 'KB',
+    expires:'48 Hours'
+  })
+
+});
+return res.send({success:true})
+
+})
 
 module.exports = router;
