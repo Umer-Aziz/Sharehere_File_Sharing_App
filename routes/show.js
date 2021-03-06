@@ -12,7 +12,7 @@ router.get('/:uuid', async(req,res)=>{
                uuid:file.uuid,
                filename:file.filename,
                fileSize:file.size,
-               downloadLink:`${process.env.APP_BASE_URL}/files/downloads/${file.uuid}`
+               downloadLink:`${process.env.APP_BASE_URL}files/downloads/${file.uuid}`
            })
 
     }catch(err){
