@@ -227,7 +227,7 @@ transition: .4s ease-in-out;
 .email_noty{
     position: absolute;
     left: 1%;
-    margin-top: 200px;
+    margin-top: 250px;
     padding: 10px 20px;
     transform: translateX(-200%);
     border-radius: 8px;
