@@ -13,7 +13,7 @@ const link_share = document.querySelector(".link_share");
 const noty = document.querySelector(".noty");
 const email_noty = document.querySelector(".email_noty");
 
-const host = "https://innshare.herokuapp.com/";
+const host = "https://websharehere.herokuapp.com/";
 const uploadURL = `${host}api/files`;
 const emailURL = `${host}api/files/send`;
 
